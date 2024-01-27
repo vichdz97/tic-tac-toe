@@ -1,17 +1,14 @@
-import { useState } from 'react';
 import '../App.css'
 
-function Block() {
+interface Props {
+    value: string;
+    onClick: () => void;
+}
 
-    const CIRCLE = 'src/assets/circle.png';
-    const X = 'src/assets/x.png';
-    const [ image, setImage ] = useState('');
-
+function Block({ value, onClick }: Props) {
     return (
-        <div className={`block col p-0 m-0 d-flex justify-content-center align-items-center`} 
-        onClick={() => setImage(CIRCLE)} 
-        role={image ? '' : 'button'}>
-            <img src={image} width='50' />
+        <div className={`block col p-0 m-0 d-flex justify-content-center align-items-center`} onClick={onClick} role={value ? '' : 'button'}>
+            <h1 className={value.includes('X') ? 'text-primary' : 'text-danger'}>{value}</h1>
         </div>
     )
 } 
