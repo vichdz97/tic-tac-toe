@@ -12,12 +12,43 @@ function App() {
     }
 
     const playXorO = (index: number) => {
-        if (grid[index]) return;
+        if (grid[index] || gameOver(grid)) return;
 
         let newGrid = grid.slice();
         myTurn ? newGrid[index] = 'X' : newGrid[index] = 'O';
+        gameOver(newGrid); // end game right when button is clicked
         setGrid(newGrid);
         setMyTurn(!myTurn);
+    }
+
+    const gameOver = (blocks: Array<string>) => {
+        let winningLines = [
+            // horizontal
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+
+            // vertical
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+
+            // diagonal
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        for (let i = 0; i < winningLines.length; i++) {
+            let winningNumbers = winningLines[i]; // winningNumbers = [x, y, z]
+            let x = winningNumbers[0];
+            let y = winningNumbers[1];
+            let z = winningNumbers[2];
+            
+            if (blocks[x] && blocks[x] == blocks[y] && blocks[x] == blocks[z]) {
+                return blocks[x]; // either X or O
+            }
+        }
+        return '';
     }
 
     return (
