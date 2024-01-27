@@ -5,7 +5,7 @@ import Block from './components/Block'
 function App() {
 
     const [ grid, setGrid ] = useState(Array(9).fill(''));
-    const [ iPlayed, setiPlayed ] = useState(true);
+    const [ myTurn, setMyTurn ] = useState(true);
 
     const refresh = () => {
         window.location.reload();
@@ -15,15 +15,16 @@ function App() {
         if (grid[index]) return;
 
         let newGrid = grid.slice();
-        iPlayed ? newGrid[index] = 'X' : newGrid[index] = 'O';
+        myTurn ? newGrid[index] = 'X' : newGrid[index] = 'O';
         setGrid(newGrid);
-        setiPlayed(!iPlayed);
+        setMyTurn(!myTurn);
     }
 
     return (
         <div className='d-flex flex-column justify-content-center align-items-center mx-1'>
             <h1>Tic-Tac-Toe</h1>
             <button className='btn btn-light border border-dark my-2' onClick={refresh}>Reset</button>
+            <h5 className={myTurn ? 'text-primary' : 'text-danger'}>{`${myTurn ? 'Player 1' : 'Player 2'}'s turn`}</h5>
             <div className="row row-cols-3 w-50">
                 <Block value={grid[0]} onClick={() => playXorO(0)} />
                 <Block value={grid[1]} onClick={() => playXorO(1)} />
