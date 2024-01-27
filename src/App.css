@@ -16,6 +16,10 @@ html, body, #root, #root>div {
     background-color: white;
 }
 
+.winningBlock, .winningBlock:hover {
+    background-color: lightgreen;
+}
+
 /* first six blocks */
 .block:nth-child(-n + 6) {
     border-bottom: 1px solid black;

@@ -7,6 +7,7 @@ function App() {
     const [ grid, setGrid ] = useState(Array(9).fill(''));
     const [ myTurn, setMyTurn ] = useState(true);
     const [ status, setStatus ] = useState('');
+    const [ winningBlocks, setWinningBlocks ] = useState(Array(9).fill(false));
 
     const refresh = () => {
         window.location.reload();
@@ -46,6 +47,10 @@ function App() {
             let z = winningNumbers[2];
             
             if (blocks[x] && blocks[x] == blocks[y] && blocks[x] == blocks[z]) {
+                let winners = winningBlocks.slice();
+                winners[x] = winners[y] = winners[z] = true;
+                setWinningBlocks(winners);
+
                 if (blocks[x].includes('X')) {
                     setStatus('Player 1 Wins!');
                 }
@@ -68,15 +73,15 @@ function App() {
                 <h5 className={myTurn ? 'text-primary' : 'text-danger'}>{`${myTurn ? 'Player 1' : 'Player 2'}'s turn`}</h5>
             }
             <div className="row row-cols-3 w-50">
-                <Block value={grid[0]} onClick={() => playXorO(0)} />
-                <Block value={grid[1]} onClick={() => playXorO(1)} />
-                <Block value={grid[2]} onClick={() => playXorO(2)} />
-                <Block value={grid[3]} onClick={() => playXorO(3)} />
-                <Block value={grid[4]} onClick={() => playXorO(4)} />
-                <Block value={grid[5]} onClick={() => playXorO(5)} />
-                <Block value={grid[6]} onClick={() => playXorO(6)} />
-                <Block value={grid[7]} onClick={() => playXorO(7)} />
-                <Block value={grid[8]} onClick={() => playXorO(8)} />
+                <Block value={grid[0]} onClick={() => playXorO(0)} changeBackground={winningBlocks[0]} />
+                <Block value={grid[1]} onClick={() => playXorO(1)} changeBackground={winningBlocks[1]} />
+                <Block value={grid[2]} onClick={() => playXorO(2)} changeBackground={winningBlocks[2]} />
+                <Block value={grid[3]} onClick={() => playXorO(3)} changeBackground={winningBlocks[3]} />
+                <Block value={grid[4]} onClick={() => playXorO(4)} changeBackground={winningBlocks[4]} />
+                <Block value={grid[5]} onClick={() => playXorO(5)} changeBackground={winningBlocks[5]} />
+                <Block value={grid[6]} onClick={() => playXorO(6)} changeBackground={winningBlocks[6]} />
+                <Block value={grid[7]} onClick={() => playXorO(7)} changeBackground={winningBlocks[7]} />
+                <Block value={grid[8]} onClick={() => playXorO(8)} changeBackground={winningBlocks[8]} />
             </div>
         </div>
     )
