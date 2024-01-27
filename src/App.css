@@ -12,6 +12,10 @@ html, body, #root, #root>div {
     background-color: rgb(237, 237, 237);
 }
 
+.blockFilled:hover {
+    background-color: white;
+}
+
 /* first six blocks */
 .block:nth-child(-n + 6) {
     border-bottom: 1px solid black;

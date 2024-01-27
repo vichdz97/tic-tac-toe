@@ -7,7 +7,7 @@ interface Props {
 
 function Block({ value, onClick }: Props) {
     return (
-        <div className={`block col p-0 m-0 d-flex justify-content-center align-items-center`} onClick={onClick} role={value ? '' : 'button'}>
+        <div className={`block ${value ? 'blockFilled' : ''} col p-0 m-0 d-flex justify-content-center align-items-center`} onClick={onClick} role={value ? '' : 'button'}>
             <h1 className={value.includes('X') ? 'text-primary' : 'text-danger'}>{value}</h1>
         </div>
     )
