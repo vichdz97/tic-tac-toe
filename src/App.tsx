@@ -60,6 +60,10 @@ function App() {
                 return blocks[x]; // either X or O
             }
         }
+
+        if (blocks.every(val => val != ''))
+            setStatus('Draw!');
+
         return '';
     }
 
