@@ -65,7 +65,7 @@ function App() {
 
     return (
         <div className='d-flex flex-column justify-content-center align-items-center m-1'>
-            <img src='src/assets/tic-tac-toe.png' width='30' />
+            <img src='/tic-tac-toe.png' width='30' />
             <h1 className='mt-2'>Tic-Tac-Toe</h1>
             <button className='btn btn-light border border-dark my-2' onClick={refresh}>Reset</button>
             { status ? 
