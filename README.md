@@ -1,7 +1,7 @@
 # Tic-Tac-Toe
 
 ## Summary
-A quick 2-Player Tic-Tac-Toe game.
+A fun, competitive 2-Player game of Tic-Tac-Toe.
 
 ## Demo
 Live demo [here](https://tic-tac-toe.victor-jr.com/). Have fun!
