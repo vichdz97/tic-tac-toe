@@ -65,14 +65,15 @@ function App() {
 
     return (
         <div className='d-flex flex-column justify-content-center align-items-center m-1'>
-            <h1>Tic-Tac-Toe</h1>
+            <img src='src/assets/tic-tac-toe.png' width='30' />
+            <h1 className='mt-2'>Tic-Tac-Toe</h1>
             <button className='btn btn-light border border-dark my-2' onClick={refresh}>Reset</button>
             { status ? 
                 <h5 className='text-success my-2'>{status}</h5> 
                 :
                 <h5 className={`${myTurn ? 'text-primary' : 'text-danger'} my-2`}>{`${myTurn ? 'Player 1' : 'Player 2'}'s turn`}</h5>
             }
-            <div className="row row-cols-3 w-50 my-3">
+            <div className="grid row row-cols-3 my-3">
                 <Block value={grid[0]} onClick={() => playXorO(0)} changeBackground={winningBlocks[0]} />
                 <Block value={grid[1]} onClick={() => playXorO(1)} changeBackground={winningBlocks[1]} />
                 <Block value={grid[2]} onClick={() => playXorO(2)} changeBackground={winningBlocks[2]} />
